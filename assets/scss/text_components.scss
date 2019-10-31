@@ -1,0 +1,14 @@
+.title_navigation{
+  @import "~rfs/scss";
+  
+  $color : #3A76C3;
+  @include font-size(1.9rem !important);
+  margin: auto;
+  font-family: "comic sans ms","sans-serif" !important;
+  color:white !important;
+  font-weight: 800 !important;
+  text-shadow: -2px -2px 3px $color , 
+                2px -2px 3px $color,
+                -2px 2px 3px $color,
+                2px 2px 3px $color;
+}
