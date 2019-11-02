@@ -2,18 +2,13 @@
   <div>
     <div id="mapa" class="fill-height w-100" style="min-width: 250px; min-height: 250px;"></div>
     <v-btn class="floating_button" color="brown darken-1" dark fab>
-      <v-icon>mdi-autorenew</v-icon>
+      <v-icon @click="initConfig">mdi-autorenew</v-icon>
     </v-btn>
   </div>
 </template>
 
 <script>
 import GoogleMapsManager from "~/plugins/GoogleMapsManager.js";
-import googleMapsClient  from '@google/maps'
-googleMapsClient.createClient({
-  key: 'AIzaSyCHZRT3mHUTTJfm8GowuJzFZP5kKFDoLgI'
-});
-
 
 export default {
   head() {
@@ -21,16 +16,15 @@ export default {
       script: [
         {
           src:
-            "https://maps.googleapis.com/maps/api/js?key=AIzaSyCHZRT3mHUTTJfm8GowuJzFZP5kKFDoLgI",
-          async: true
+            "https://maps.googleapis.com/maps/api/js?key=AIzaSyCHZRT3mHUTTJfm8GowuJzFZP5kKFDoLgI"
+          // async: true,
+          // defer: true
         },
         {
           src: "https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js",
-          async: true
         },
         {
           src: "https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js",
-          async: true
         }
       ]
     };
@@ -42,7 +36,7 @@ export default {
       coords: null,
       markers: [],
       routes: [],
-      cleanRoutes:false,
+      cleanRoutes: false,
       paradaITVH: {
         lat: 18.02465,
         lng: -92.903413
@@ -85,13 +79,27 @@ export default {
 
         this.usuariosChage();
       } catch (error) {
-        console.log(error.message);
+        console.log("Error al iniciar la carga",error.message);
 
         if (error.message === "User denied Geolocation") {
           this.$toast.show("Permite la localizacion", {
             type: "info",
             position: "top-right",
             theme: "outline"
+          });
+        } else if(error.message === "google is not defined"){
+          //window.location.reload(true)
+          this.$toast.show("Google maps API no cargo correctamente", {
+            type: "error",
+            position: "top-right",
+            theme: "outline",
+            action: {
+              text: "Reiniciar",
+              onClick: (e, toastObject) => {
+                window.location.reload(true)
+                toastObject.remove();
+              }
+            }
           });
         } else {
           this.$toast.show("A ocurrido un error", {
@@ -101,7 +109,7 @@ export default {
             action: {
               text: "Reiniciar",
               onClick: (e, toastObject) => {
-                this.initConfig();
+                window.location.reload(true)
                 toastObject.remove();
               }
             }
@@ -113,7 +121,7 @@ export default {
       this.usuario.on("value", snap => {
         this.deleteMarkers();
 
-        snap.forEach( item => {
+        snap.forEach(item => {
           //Creando las marcas que aparecen en el mapa
           let mark = GoogleMapsManager.makeMark(
             item.val().Latitud,
@@ -127,10 +135,11 @@ export default {
 
           let DataRoutes = this.gmm.drawRoute(
             { lat: this.paradaITVH.lat, lng: this.paradaITVH.lng },
-            { lat: item.val().Latitud, lng: item.val().Longitud }
+            { lat: item.val().Latitud, lng: item.val().Longitud },
+            (directionsDisplay, data) => {
+              this.routes.push(directionsDisplay);
+            }
           );
-
-          // this.routes.push(directionsDisplay)
         });
 
         this.drawMarkers();
@@ -158,9 +167,9 @@ export default {
       this.markers.forEach(mark => {
         mark.setMap(this.gmm.containerMap);
       });
-      // this.routes.forEach(route => {
-      //   route.setMap(this.gmm.containerMap);
-      // });
+      this.routes.forEach(route => {
+        route.setMap(this.gmm.containerMap);
+      });
     },
     deleteMarkers() {
       this.markers.forEach(mark => {
@@ -168,10 +177,10 @@ export default {
       });
       this.markers = [];
 
-      // this.routes.forEach(route => {
-      //   route.setMap(null);
-      // });
-      // this.routes = [];
+      this.routes.forEach(route => {
+        route.setMap(null);
+      });
+      this.routes = [];
     }
   }
 };

@@ -8,7 +8,7 @@
         </v-img>
     </div>
 
-    <perfect-scrollbar class="aside_body" :options="{ swipeEasing: true}">
+    <perfect-scrollbar class="aside_body" :options="{ swipeEasing: true , suppressScrollX: true}">
         <v-list two-line class="list-cont remove-underline  brown darken-1">
             <v-list-item-group active-class="title_active">
                 <v-list-item>

@@ -54,7 +54,7 @@ export default class GoogleMapsManager {
     return marker;
   }
 
-  drawRoute(markerOrigin, markerDestination,travelMode = "DRIVING"){
+  drawRoute(markerOrigin, markerDestination,cbRequest,color="#ff222290",travelMode = "DRIVING"){
     let gmDirection = new google.maps.DirectionsService();
     let directionsDisplay = new google.maps.DirectionsRenderer();
     let request = {
@@ -65,12 +65,12 @@ export default class GoogleMapsManager {
       ),
       travelMode
     };
-    gmDirection.route(request, (data, status) => {
+    gmDirection.route(request,(data, status) => {
       if (status === "OK") {
         let options = {
           preserveViewport: true,
           polylineOptions: {
-            strokeColor: "rgba(0,0,0,.75)"
+            strokeColor: color
           },
           markerOptions: {
             visible: false
@@ -79,7 +79,7 @@ export default class GoogleMapsManager {
         directionsDisplay.setOptions(options);
         directionsDisplay.setMap(this.containerMap);
         directionsDisplay.setDirections(data);
-        console.log(data)
+        cbRequest(directionsDisplay,data)
         } else {
           return status
         }

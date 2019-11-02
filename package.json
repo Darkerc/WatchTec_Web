@@ -11,19 +11,15 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@google/maps": "^1.0.2",
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/pwa": "^3.0.0-0",
     "@nuxtjs/toast": "^3.2.1",
     "cross-env": "^5.2.0",
     "express": "^4.16.4",
-    "google-maps": "^3.3.0",
-    "net": "^1.0.2",
     "nuxt": "^2.10.1",
     "rfs": "^9.0.0",
     "socket.io": "^2.2.0",
     "socket.io-client": "^2.2.0",
-    "tls": "0.0.1",
     "vue2-perfect-scrollbar": "^1.2.1"
   },
   "devDependencies": {
