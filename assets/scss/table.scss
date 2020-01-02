@@ -1,0 +1,37 @@
+@import "../../node_modules/rfs/scss";
+
+.table{
+    font-family: 'Raleway',"comic sans ms",sans-serif;
+
+    caption{
+        @include font-size(2rem !important);
+        @include padding-top(.5rem !important);
+        @include padding-bottom(.5rem !important);
+    }
+
+    thead{
+        @include font-size(2rem !important);
+    }
+
+    tbody{
+        tr{
+            transition: all 200ms ease-in-out;
+
+            &:hover{
+                background-color: #eee;
+            }
+
+            td{
+                box-sizing: border-box;
+                @include padding(.5rem !important);
+                @include font-size(1.2rem !important);
+                text-align: center;
+                border-top: 1px solid #00000077;
+            }
+
+            
+        }
+    }
+
+
+}

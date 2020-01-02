@@ -1,0 +1,40 @@
+{
+  "name": "fetch_me",
+  "version": "1.0.0",
+  "description": "Proyecto de gps",
+  "author": "Eder R.C",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "build": "nuxt build",
+    "start": "cross-env NODE_ENV=production node server/index.js",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/auth": "^4.8.5",
+    "@nuxtjs/axios": "^5.9.0",
+    "@nuxtjs/pwa": "^3.0.0-0",
+    "cors": "^2.8.5",
+    "cross-env": "^6.0.3",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.6",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.8.2",
+    "morgan": "^1.9.1",
+    "npm": "^6.13.4",
+    "nuxt": "^2.11.0",
+    "vee-validate": "^3.2.1"
+  },
+  "devDependencies": {
+    "@nuxtjs/style-resources": "^1.0.0",
+    "@nuxtjs/toast": "^3.3.0",
+    "@nuxtjs/vuetify": "^1.9.1",
+    "local-storage": "^2.0.0",
+    "node-sass": "^4.13.0",
+    "nodemon": "^2.0.2",
+    "nuxt-webfontloader": "^1.1.0",
+    "rfs": "^9.0.2",
+    "sass-loader": "^8.0.0",
+    "vue2-perfect-scrollbar": "^1.2.5"
+  }
+}

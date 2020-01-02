@@ -1,0 +1,15 @@
+.divider{
+    width: 85%;
+    box-sizing: border-box;
+    margin: 7px auto;
+    height: 1px;
+    border-radius: 35%;
+
+    &.divider_black{
+        background: #202020;
+    }
+
+    &.divider_white{
+        background: #fff;
+    }
+}

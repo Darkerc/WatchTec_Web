@@ -1,0 +1,28 @@
+.title_navigation{
+  @import "~rfs/scss";
+  
+  $color : #3A76C3;
+  @include font-size(1.9rem !important);
+  margin: auto;
+  color:white !important;
+  font-weight: 800 !important;
+  text-shadow: -2px -2px 3px $color , 
+                2px -2px 3px $color,
+                -2px 2px 3px $color,
+                2px 2px 3px $color;
+}
+
+.subtitle{
+  @import "~rfs/scss";
+  
+  $color : #3A76C3;
+  $blur : 4px;
+  $sizePX : 2px;
+  margin: auto;
+  color:white !important;
+  font-weight: 800 !important;
+  text-shadow: -$sizePX -$sizePX $blur $color , 
+                $sizePX -$sizePX $blur $color,
+                -$sizePX $sizePX $blur $color,
+                $sizePX $sizePX $blur $color;
+}

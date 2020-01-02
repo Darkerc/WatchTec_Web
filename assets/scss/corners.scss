@@ -1,0 +1,54 @@
+
+$color :#795548;
+
+.corner_top{
+    position: relative;
+
+    &:before{
+        content: "";
+        position: absolute;
+        top: -15%;
+        left: -15%;
+        width: 20%;
+        height: 20%;
+        transform: rotate(-45deg);
+        background-color: $color;
+      }
+  
+      &:after{
+        content: "";
+        position: absolute;
+        top: -15%;
+        right: -15%;
+        width: 20%;
+        height: 20%;
+        transform: rotate(45deg);
+        background-color: $color;
+      }
+}
+
+.corner_bottom{
+    position: relative;
+
+    &:before{
+        content: "";
+        position: absolute;
+        bottom: -15%;
+        left: -15%;
+        width: 20%;
+        height: 20%;
+        transform: rotate(45deg);
+        background-color: $color;
+      }
+  
+      &:after{
+        content: "";
+        position: absolute;
+        bottom: -115%;
+        right: -115%;
+        width: 20%;
+        height: 20%;
+        transform: rotate(45deg);
+        background-color: $color;
+      }
+}
