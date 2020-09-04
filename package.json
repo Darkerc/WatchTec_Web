@@ -30,7 +30,7 @@
     "@nuxtjs/toast": "^3.3.0",
     "@nuxtjs/vuetify": "^1.9.1",
     "local-storage": "^2.0.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "nodemon": "^2.0.2",
     "nuxt-webfontloader": "^1.1.0",
     "rfs": "^9.0.2",
